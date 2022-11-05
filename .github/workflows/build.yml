@@ -1,9 +1,9 @@
-name: AppImage Build
+name: AppImage Build and make release
 
 on:
   push:
-    branches:
-      - 'master'
+    paths:
+      - 'release-versions/*'
 
   workflow_dispatch:
 
@@ -18,18 +18,21 @@ jobs:
     - uses: actions/checkout@master
 
     - name: Build the Docker image
+      id: build
       working-directory: .
       run: |
-        docker build . -t tmux --build-arg TMUX_RELEASE_TAG=3.3a
+        TMUX_RELEASE_TAG=$(cat release-versions/tmux-latest.txt)
+        echo "TMUX_RELEASE_TAG=$TMUX_RELEASE_TAG" >> $GITHUB_OUTPUT
+        docker build . -t tmux --build-arg TMUX_RELEASE_TAG=$TMUX_RELEASE_TAG
         docker create -ti --name tmuxcontainer tmux bash
         docker cp tmuxcontainer:/opt/build/tmux.appimage .
     - name: Create Release
       uses: ncipollo/release-action@v1
       with:
         allowUpdates: True
-        tag: 3.3a
-        name: tmux 3.3a
-        prerelease: True
+        tag: ${{ steps.build.outputs.TMUX_RELEASE_TAG }}
+        name: tmux ${{ steps.build.outputs.TMUX_RELEASE_TAG }}
+        prerelease: False
         artifacts: "tmux.appimage"
         token: ${{ secrets.GITHUB_TOKEN }}
 
