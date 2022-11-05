@@ -1,11 +1,7 @@
-name: Get latest tmux release version
+name: Build and release when new tmux version is out. 
 on:
   schedule:
     - cron:  '0 10 * * *'
-
-  # push:
-  #   branches:
-  #     - 'master'
 
   workflow_dispatch:
 
@@ -30,3 +26,25 @@ jobs:
           git config --global user.email 'kiyoon@users.noreply.github.com'
           git commit -am "New tmux release version"
           git push
+
+      - name: Build the Docker image
+        if: steps.git-check.outputs.modified == 'true'
+        id: build
+        working-directory: .
+        run: |
+          TMUX_RELEASE_TAG=$(cat release-versions/tmux-latest.txt)
+          echo "TMUX_RELEASE_TAG=$TMUX_RELEASE_TAG" >> $GITHUB_OUTPUT
+          docker build . -t tmux --build-arg TMUX_RELEASE_TAG=$TMUX_RELEASE_TAG
+          docker create -ti --name tmuxcontainer tmux bash
+          docker cp tmuxcontainer:/opt/build/tmux.appimage .
+      - name: Create Release
+        if: steps.git-check.outputs.modified == 'true'
+        uses: ncipollo/release-action@v1
+        with:
+          allowUpdates: True
+          tag: ${{ steps.build.outputs.TMUX_RELEASE_TAG }}
+          name: tmux ${{ steps.build.outputs.TMUX_RELEASE_TAG }}
+          prerelease: False
+          artifacts: "tmux.appimage"
+          token: ${{ secrets.GITHUB_TOKEN }}
+
