@@ -19,7 +19,6 @@ jobs:
 
     - name: Build the Docker image
       working-directory: .
-      uses: docker/build-push-action@v3.2.0
       run: |
         docker build . -t tmux --build-arg TMUX_RELEASE_TAG=3.3a
         docker create -ti --name tmuxcontainer tmux bash
