@@ -12,6 +12,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          ref: master
       - name: Fetch release version
         run: |
           curl -sL https://api.github.com/repos/tmux/tmux/releases/latest | \
