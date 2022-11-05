@@ -3,9 +3,9 @@ on:
   schedule:
     - cron:  '0 10 * * *'
 
-  push:
-    branches:
-      - 'master'
+  # push:
+  #   branches:
+  #     - 'master'
 
   workflow_dispatch:
 
@@ -22,7 +22,7 @@ jobs:
           jq -r ".tag_name" > release-versions/tmux-latest.txt
       - name: Check for modified files
         id: git-check
-        run: echo ::set-output name=modified::$([ -z "`git status --porcelain`" ] && echo "false" || echo "true")
+        run: echo modified="$([ -z "`git status --porcelain`" ] && echo "false" || echo "true")" >> $GITHUB_OUTPUT
       - name: Commit latest release version
         if: steps.git-check.outputs.modified == 'true'
         run: |
