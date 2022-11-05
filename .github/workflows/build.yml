@@ -1,0 +1,38 @@
+name: AppImage Build
+
+on:
+  push:
+    branches:
+      - 'master'
+
+  workflow_dispatch:
+
+jobs: 
+
+  # This workflow contains a single job called "build"
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@master
+
+    - name: Build the Docker image
+      working-directory: .
+      uses: docker/build-push-action@v3.2.0
+      run: |
+        docker build . -t tmux --build-arg TMUX_RELEASE_TAG=3.3a
+        docker create -ti --name tmuxcontainer tmux bash
+        docker cp tmuxcontainer:/opt/build/tmux.appimage .
+    - name: Create Release
+      uses: ncipollo/release-action@v1
+      with:
+        allowUpdates: True
+        tag: 3.3a
+        name: tmux 3.3a
+        prerelease: True
+        artifacts: "tmux.appimage"
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+
+

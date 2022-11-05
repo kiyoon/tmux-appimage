@@ -1,7 +1,7 @@
 # Tmux AppImage
 One-liner to get the latest tmux.appimage build:
 ```
-curl -s https://api.github.com/repos/nelsonenzo/tmux-appimage/releases/latest \
+curl -s https://api.github.com/repos/kiyoon/tmux-appimage/releases/latest \
 | grep "browser_download_url.*appimage" \
 | cut -d : -f 2,3 \
 | tr -d \" \
