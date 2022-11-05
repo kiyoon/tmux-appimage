@@ -13,9 +13,9 @@ jobs:
   get-version:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
-          token: ${{ secrets.REPO_SCOPED_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Fetch release version
         run: |
           curl -sL https://api.github.com/repos/tmux/tmux/releases/latest | \
