@@ -1,9 +1,9 @@
 name: AppImage Build and make release
 
 on:
-  push:
-    paths:
-      - 'release-versions/*'
+  # push:
+  #   paths:
+  #     - 'release-versions/**'
 
   workflow_dispatch:
 
