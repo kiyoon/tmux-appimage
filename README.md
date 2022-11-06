@@ -12,6 +12,10 @@ curl -s https://api.github.com/repos/kiyoon/tmux-appimage/releases/latest \
 mv tmux.appimage /usr/local/bin/tmux
 tmux
 ```
+
+### Fork notice
+This fork utilises GitHub Action to **detect, build and release the latest version of tmux as soon as they release**.
+
 ### What is this?
 A Docker build of Tmux Appimage
 
