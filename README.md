@@ -1,4 +1,6 @@
 # Tmux AppImage
+![build](https://github.com/kiyoon/tmux-appimage/actions/workflows/check_tmux_version.yml/badge.svg)
+
 One-liner to get the latest tmux.appimage build:
 ```
 curl -s https://api.github.com/repos/kiyoon/tmux-appimage/releases/latest \
@@ -18,6 +20,7 @@ This fork utilises GitHub Action to **detect, build and release the latest versi
 
 ### What is this?
 A Docker build of Tmux Appimage
+![badge](https://user-images.githubusercontent.com/12980409/200389795-74ddf2bc-58d9-4636-a0cd-0276401b4387.svg)
 
 ### Why use Docker?
 The advantages of using docker:
