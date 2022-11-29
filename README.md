@@ -2,7 +2,7 @@
 ![build](https://github.com/kiyoon/tmux-appimage/actions/workflows/check_tmux_version.yml/badge.svg)
 
 One-liner to get the latest tmux.appimage build:
-```
+```bash
 curl -s https://api.github.com/repos/kiyoon/tmux-appimage/releases/latest \
 | grep "browser_download_url.*appimage" \
 | cut -d : -f 2,3 \
@@ -13,6 +13,13 @@ curl -s https://api.github.com/repos/kiyoon/tmux-appimage/releases/latest \
 ## optionaly, move it into your $PATH
 mv tmux.appimage /usr/local/bin/tmux
 tmux
+```
+
+Option 2: One-liner to locally-install the latest tmux on bash (tested on Ubuntu)  
+
+```bash
+# It will install on ~/.local/bin/tmux
+source <(curl -sS https://raw.githubusercontent.com/kiyoon/tmux-local-install/master/install.sh)
 ```
 
 ### Fork notice
