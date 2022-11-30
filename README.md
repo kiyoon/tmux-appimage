@@ -15,7 +15,7 @@ mv tmux.appimage /usr/local/bin/tmux
 tmux
 ```
 
-Option 2: One-liner to locally-install the latest tmux on bash (tested on Ubuntu)  
+Option 2: One-liner to locally-install the latest tmux  
 
 ```bash
 # It will install on ~/.local/bin/tmux
