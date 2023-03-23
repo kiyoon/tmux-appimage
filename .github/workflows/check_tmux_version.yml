@@ -15,8 +15,11 @@ jobs:
           ref: master
       - name: Fetch release version
         run: |
-          curl -sL https://api.github.com/repos/tmux/tmux/releases/latest | \
-          jq -r ".tag_name" > release-versions/tmux-latest.txt
+          latest_version=$(curl -sL https://api.github.com/repos/tmux/tmux/releases/latest | jq -r ".tag_name")
+          if [[ $latest_version != "null" ]]
+          then
+             echo "$latest_version" > release-versions/tmux-latest.txt
+          fi
       - name: Check for modified files
         id: git-check
         run: echo modified="$([ -z "`git status --porcelain`" ] && echo "false" || echo "true")" >> $GITHUB_OUTPUT
