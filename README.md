@@ -17,6 +17,7 @@ tmux
 
 Option 2: One-liner to locally-install the latest tmux  
 
+
 ```bash
 # It will install on ~/.local/bin/tmux
 source <(curl -sS https://raw.githubusercontent.com/kiyoon/tmux-local-install/master/install.sh)
