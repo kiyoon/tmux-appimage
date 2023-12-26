@@ -37,7 +37,7 @@ The advantages of using docker:
 
 ### Build it yourself from source code
 I assume you have docker installed already.
-```
+```bash
 #### clone me & change directory
 git clone https://github.com/kiyoon/tmux-appimage.git
 cd tmux-appimage
