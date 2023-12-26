@@ -39,11 +39,11 @@ The advantages of using docker:
 I assume you have docker installed already.
 ```
 #### clone me & change directory
-git clone https://github.com/nelsonenzo/tmux-appimage.git
+git clone https://github.com/kiyoon/tmux-appimage.git
 cd tmux-appimage
 
 #### Set the desired tmux release tag and build
-export TMUX_RELEASE_TAG=3.2a
+export TMUX_RELEASE_TAG=3.3a
 docker build . -t tmux --build-arg TMUX_RELEASE_TAG=$TMUX_RELEASE_TAG 
 
 #### extract the appimage file
@@ -57,6 +57,8 @@ ls -al tmux.appimage
 ### Where has the AppImage been tested to turn?
 It has been tested on these fine Linux platforms and will likely work for anything newer than centos 6.9 (which is a few years old now.) Please file an issue if you find otherwise or need support on a different platform.
 ```
+ubuntu 22.04
+ubuntu 20.04
 ubuntu 18.04
 ubuntu 16.04
 manjaro 19.02
