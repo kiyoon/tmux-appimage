@@ -1,3 +1,7 @@
+
+> [!NOTE]
+> This fork utilises GitHub Action to **detect, build and release the latest version of tmux as soon as they release**.
+
 # Tmux AppImage
 ![build](https://github.com/kiyoon/tmux-appimage/actions/workflows/check_tmux_version.yml/badge.svg)
 
@@ -20,11 +24,10 @@ Option 2: One-liner to locally-install the latest tmux
 
 ```bash
 # It will install on ~/.local/bin/tmux
+# and add $PATH to .bashrc and .zshrc
 source <(curl -sS https://raw.githubusercontent.com/kiyoon/tmux-local-install/master/install.sh)
 ```
 
-### Fork notice
-This fork utilises GitHub Action to **detect, build and release the latest version of tmux as soon as they release**.
 
 ### What is this?
 A Docker build of Tmux Appimage
