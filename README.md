@@ -55,16 +55,37 @@ ls -al tmux.appimage
 ```
 
 ### Where has the AppImage been tested to turn?
-It has been tested on these fine Linux platforms and will likely work for anything newer than centos 6.9 (which is a few years old now.) Please file an issue if you find otherwise or need support on a different platform.
+
+Required GLIBC version: `2.14`
+
+You can check this with this command:
+
+```console
+$ # Check what tmux.appimage requires.
+$ objdump -T tmux.appimage | grep -v GLIBCXX | grep GLIBC | sed 's/.*GLIBC_\([.0-9]*\).*/\1/g' | sort -Vu | tail -1
+2.14
+
+$ # Check which GLIBC is installed in your OS.
+$ ldd --version
+ldd (Ubuntu GLIBC 2.35-0ubuntu3.8) 2.35
+Copyright (C) 2022 Free Software Foundation, Inc.
+```
+
+It has been tested on these fine Linux platforms and will likely work for anything newer than centos 6.9 (which is a few years old now.)
+
 ```
 ubuntu 22.04
 ubuntu 20.04
 ubuntu 18.04
 ubuntu 16.04
-manjaro 19.02
-centos 7
+ubuntu 14.04
+ubuntu 12.04
+centos stream 10
+centos stream 9
 centos 8
+centos 7
 fedora 33
+manjaro 19.02
 ```
 The distributed build will not work on old os's (like Centos 6), since they have older glibc libraries.
 If you need it to work on those systems, try modifying the Dockerfile to use an older ubuntu as the base image and doing a docker build.
