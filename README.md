@@ -67,6 +67,7 @@ Copyright (C) 2022 Free Software Foundation, Inc.
 It has been tested on these fine Linux platforms and will likely work for anything newer than centos 6.9 (which is a few years old now.)
 
 ```
+ubuntu 24.04
 ubuntu 22.04
 ubuntu 20.04
 ubuntu 18.04
