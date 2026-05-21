@@ -25,8 +25,8 @@ RUN git clone https://github.com/libevent/libevent --depth 1 -b release-2.1.12-s
 
 ## ncurses
 WORKDIR $BUILD_DIR
-RUN curl -OL https://invisible-island.net/datafiles/release/ncurses.tar.gz && \
-    tar -xf ncurses.tar.gz && \
+RUN curl -OL https://invisible-island.net/archives/ncurses/ncurses-6.3.tar.gz && \
+    tar -xf ncurses-6.3.tar.gz && \
     NCURSES_DIR="$PWD/ncurses-6.3" && \
     cd "$NCURSES_DIR" && \
     ./configure --with-shared --prefix="$BUILD_DIR/AppDir/usr" --without-normal --without-debug && \
