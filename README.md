@@ -1,3 +1,6 @@
+> [!WARNING]
+> tmux now provides official prebuilt binaries via https://github.com/tmux/tmux-builds  
+> As a result, this repository is effectively obsolete. Please use the official builds instead.
 
 > [!NOTE]
 > This fork utilises GitHub Action to **detect, build and release the latest version of tmux as soon as they release**.
